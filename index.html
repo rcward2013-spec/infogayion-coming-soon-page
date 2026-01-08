@@ -1,76 +1,327 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-ZA">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infogaytion - Coming Soon</title>
-  <meta name="description" content="Infogaytion is coming soon. Discover venues, events, and meaningful connections for the LGBTQ+ community.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infogaytion — Coming Soon</title>
+  <meta name="description" content="Infogaytion is coming soon — your LGBTQ+ guide to venues, events, travel, and community. Launching soon." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Infogaytion — Coming Soon" />
+  <meta property="og:description" content="Your LGBTQ+ guide to venues, events, travel, and community. Launching soon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo-black.png" />
+  <meta name="theme-color" content="#0b0c10" />
+
+  <link rel="icon" href="logo-black.png" />
+
   <style>
-    /* Reset default styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #ff4c4c, #ffb347, #ff4c4c);
-      color: #fff;
-      text-align: center;
-      flex-direction: column;
-      padding: 20px;
+    :root{
+      --bg:#0b0c10;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.66);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 980px;
     }
 
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 20px;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1000px 600px at 18% 15%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 550px at 85% 35%, rgba(255,255,255,.08), transparent 55%),
+        radial-gradient(900px 600px at 50% 95%, rgba(255,255,255,.06), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 18px;
     }
 
-    p {
-      font-size: 1.5rem;
-      max-width: 500px;
-      margin-bottom: 30px;
-      line-height: 1.4;
+    .wrap{
+      width:100%;
+      max-width: var(--max);
     }
 
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 30px;
-      border-radius: 50%;
-      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-      display: inline-block;
+    .card{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
-    .social-links a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 1.2rem;
-      transition: 0.3s;
+    header{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
     }
 
-    .social-links a:hover {
-      color: #ffd700;
+    .logo{
+      width: 92px;
+      height: 92px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover; /* works best if your logo is on black background */
+      display:block;
     }
 
-    @media(max-width: 600px){
-      h1 { font-size: 3rem; }
-      p { font-size: 1.2rem; }
+    .title h1{
+      margin:0;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing: .2px;
+    }
+    .title p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 56ch;
+    }
+
+    .content{
+      padding: 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    .badge{
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding: 8px 10px;
+      border-radius: 999px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      user-select:none;
+    }
+
+    .badge .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+    }
+
+    .cta h2{
+      margin:0 0 8px;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .cta p{
+      margin:0 0 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    form{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    input[type="email"]{
+      flex: 1 1 220px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      outline:none;
+    }
+    input::placeholder{ color: rgba(255,255,255,.45); }
+    button{
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
+      color: var(--text);
+      cursor:pointer;
+    }
+    button:hover{ border-color: rgba(255,255,255,.22); background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.10)); }
+
+    .fine{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.45;
+    }
+
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .links a{
+      color: rgba(255,255,255,.78);
+      text-decoration:none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+    .links a:hover{ border-color: rgba(255,255,255,.22); }
+
+    footer{
+      padding: 16px 22px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      background: rgba(0,0,0,.14);
+    }
+
+    @media (max-width: 820px){
+      header{ align-items:flex-start; }
+      .content{ grid-template-columns: 1fr; }
+      .logo{ width:82px; height:82px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="logo"></div>
-  <h1>Infogaytion</h1>
-  <p>Our website is under construction. We're building a space to help the LGBTQ+ community discover venues, events, and meaningful connections. Stay tuned!</p>
-  
-  <div class="social-links">
-    <a href="https://instagram.com/infogaytion" target="_blank">Instagram</a> |
-    <a href="https://facebook.com/infogaytion" target="_blank">Facebook</a> |
-    <a href="https://twitter.com/infogaytion" target="_blank">Twitter</a>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="logo" aria-label="Infogaytion logo">
+          <img src="logo-black.png" alt="Infogaytion" />
+        </div>
+        <div class="title">
+          <h1>We’re building Infogaytion</h1>
+          <p>Your LGBTQ+ guide to venues, events, travel, and community — launching soon.</p>
+
+          <div class="badge-row" aria-hidden="true">
+            <span class="badge"><span class="dot"></span> Cape Town</span>
+            <span class="badge"><span class="dot"></span> Venues</span>
+            <span class="badge"><span class="dot"></span> Events</span>
+            <span class="badge"><span class="dot"></span> Guides</span>
+            <span class="badge"><span class="dot"></span> Support & resources</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="panel">
+          <h2 style="margin:0 0 10px; font-size:16px;">Coming soon</h2>
+          <p style="margin:0; color: var(--muted); line-height:1.55;">
+            We’re polishing the experience and finalising listings. For launch updates, drop your email below.
+          </p>
+
+          <!-- ✅ OPTION A (simple, no service): uses mailto. Good for testing, not ideal for real signups. -->
+          <!--
+          <div class="links">
+            <a href="mailto:hello@infogaytion.com?subject=Infogaytion%20Launch%20Updates&body=Please%20add%20me%20to%20launch%20updates.%0A%0AEmail%3A%20">Email us to join the list</a>
+          </div>
+          -->
+
+          <!-- ✅ OPTION B (recommended): connect to your email platform (Brevo/MailerLite/Mailchimp/etc.)
+               Replace action="" with your form endpoint OR paste your provider's embed script.
+          -->
+          <div class="cta" style="margin-top:14px;">
+            <h2>Get launch updates</h2>
+            <p>No spam. Unsubscribe anytime.</p>
+
+            <!-- Basic HTML form (wire this to your provider or backend) -->
+            <form id="signup" action="" method="post" onsubmit="return handleSubmit(event)">
+              <input required type="email" name="email" placeholder="you@example.com" autocomplete="email" />
+              <button type="submit">Notify me</button>
+              <div id="msg" class="fine" role="status" aria-live="polite"></div>
+            </form>
+
+            <div class="fine">
+              By signing up, you consent to receive email updates from Infogaytion.
+              We’ll never sell your info.
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <h2 style="margin:0 0 10px; font-size:16px;">Quick links</h2>
+          <p style="margin:0 0 14px; color: var(--muted); line-height:1.55; font-size:14px;">
+            Want to reach us or follow along?
+          </p>
+
+          <div class="links">
+            <a href="mailto:hello@infogaytion.com">hello@infogaytion.com</a>
+            <!-- Replace these with your real URLs when ready -->
+            <a href="#" onclick="return false;">Instagram</a>
+            <a href="#" onclick="return false;">TikTok</a>
+            <a href="#" onclick="return false;">Facebook</a>
+            <a href="#" onclick="return false;">YouTube</a>
+          </div>
+
+          <div class="fine" style="margin-top:14px;">
+            Tip: keep this page live until your full site is ready, then redirect or replace it.
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        <span>© <span id="year"></span> Infogaytion. All rights reserved.</span>
+        <span>Under construction.</span>
+      </footer>
+    </div>
   </div>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // If you haven't connected a real form yet, this prevents a broken submit.
+    function handleSubmit(e){
+      const form = e.target;
+      const action = (form.getAttribute("action") || "").trim();
+      const msg = document.getElementById("msg");
+
+      if(!action){
+        e.preventDefault();
+        msg.textContent = "Signup form isn’t connected yet — add your email provider embed/action URL when ready.";
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
 </html>
