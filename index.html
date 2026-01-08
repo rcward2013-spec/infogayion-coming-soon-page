@@ -54,4 +54,58 @@
     p {
       font-size: 18px;
       line-height: 1.6;
-      color: rgba
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 35px;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 40px;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 26px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <!-- Replace with your logo file -->
+      <img src="logo.png" alt="Infogaytion logo">
+    </div>
+
+    <h1>We’re building Infogaytion</h1>
+
+    <p>
+      Infogaytion is your LGBTQ+ guide to venues, events, travel, and community.
+      We’re working behind the scenes and will be launching soon.
+    </p>
+
+    <div class="tagline">
+      Navigate your LGBTQ+ world.
+    </div>
+
+    <div class="footer">
+      © <span id="year"></span> Infogaytion. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
